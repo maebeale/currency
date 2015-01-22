@@ -1,5 +1,5 @@
 module Rates
-  RATES_HASH = { :USD => 2.0, :EUR => 0.74 }
+  RATES_HASH = { :USD => 1.0, :EUR => 0.74 }
 end
 
 
