@@ -81,10 +81,16 @@ class CurrencyTest < ::MiniTest::Test
     assert_equal 25.62, (currency1 * 5.1234).amount
   end
 
-  def test_currency_can_accept_additional_arguments_to_instantiate
-    currency = Currency.new($5.00)
-    assert currency.amount == 5
-    assert currency.code == :usd
+  def test_currency_can_accept_string_arguments_to_instantiate
+    fin = Currency.new('$5.00')
+    assert fin.amount == 5
+    assert fin.code == :USD
+  end
+
+  def test_currency_can_accept_still_take_two_arguments
+    fin = Currency.new(5, :USD)
+    assert fin.amount == 5
+    assert fin.code == :USD
   end
 
 end

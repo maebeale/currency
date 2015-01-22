@@ -1,12 +1,21 @@
 require './errors'
 
 class Currency
+  # include SymbolsHash
 
   attr_reader :amount, :code
 
-  def initialize(amount, code)
-    @amount = amount
-    @code = code
+  def initialize(*details)
+    symbols_hash = {'$' => :USD, '€' => :EUR, '¥' => :JPY } #TODO - make this a module? Rework so USD & CAD can both be in hash
+    if details[0].class == String
+      m = details[0].match /(\W*)\s*(\d+\.\d{2})/
+        @amount = m[2].to_i
+        @code = symbols_hash[m[1]]
+    else #details[0].class == FixNum
+      @amount = details[0]
+      @code = details[1]
+    end
+
   end
 
   def ==(other)
