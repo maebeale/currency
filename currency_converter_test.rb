@@ -11,7 +11,7 @@ class CurrencyConverterTest < ::MiniTest::Test
   def test_currency_converter_initializes_with_a_hash
     hash = Hash.new
     converter = CurrencyConverter.new(hash)
-    
+
 
 
   end
