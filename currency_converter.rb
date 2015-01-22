@@ -1,4 +1,9 @@
 class CurrencyConverter
-  def initialize(hash)
+
+  
+  def initialize(rates)
+    @rates = rates
   end
+
+
 end

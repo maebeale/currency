@@ -9,10 +9,15 @@ class CurrencyConverterTest < ::MiniTest::Test
   end
 
   def test_currency_converter_initializes_with_a_hash
-    hash = Hash.new
-    converter = CurrencyConverter.new(hash)
-
-
-
+    rates_hash = { 'USD' => 1.0, 'EUR' => 0.74 }
+    converter = CurrencyConverter.new(rates_hash)
   end
+
+  def test_currency_convert_method_returns_new_object_with_same_amount_and_code
+    rates_hash = { 'USD' => 1.0, 'EUR' => 0.74 }
+    converter = CurrencyConverter.new(rates_hash)
+    assert_equal converter.convert(Currency.new(1, :USD), :USD), Currency.new(1, :USD)
+  end
+
+
 end
