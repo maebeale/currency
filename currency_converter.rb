@@ -11,11 +11,14 @@ class CurrencyConverter
 
     if current_code == new_code
       currency
+    elsif current_code != new_code && @rates.include?(new_code) && @rates.include?(current_code)
+      new_amount = ((current_amount / rates[current_code]) * rates[new_code]).round(2)
+      Currency.new(new_amount, new_code)
     else
-      total = (current_amount / rates[current_code]) * rates[new_code]
-      Currency.new(total, new_code)
+      raise UnknownCurrencyCodeError, "Unknown Currency Code. We'll need to update our hash."
     end
 
   end
 
 end
+
