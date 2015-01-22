@@ -1,3 +1,5 @@
+require './errors'
+
 class CurrencyConverter
   attr_accessor :rates
 

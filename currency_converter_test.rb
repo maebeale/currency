@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require './errors'
 require './currency'
 require './currency_converter'
 #
@@ -30,6 +31,16 @@ class CurrencyConverterTest < ::MiniTest::Test
     rates_hash = { :USD => 1.0, :EUR => 0.74, :JPY => 120.0, :CAN => 10.0 }
     converter = CurrencyConverter.new(rates_hash)
     assert_equal Currency.new(120, :JPY), converter.convert(Currency.new(10, :CAN), :JPY)
+  end
+
+  def test_currency_convert_method_raises_error_if_unknown_code
+    rates_hash = { :USD => 1.0, :EUR => 0.74, :JPY => 120.0, :CAN => 10.0 }
+    converter = CurrencyConverter.new(rates_hash)
+    zulu_money = Currency.new(1, :ZAR)
+    assert_raises(UnknownCurrencyCodeError) do
+      converter.convert(Currency.new(10, :USD), :ZAR)
+    end
+
   end
 
 

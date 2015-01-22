@@ -1,3 +1,5 @@
+require './errors'
+
 class Currency
 
   attr_reader :amount, :code

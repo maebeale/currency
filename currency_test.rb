@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require './errors'
 require './currency'
 #
 class CurrencyTest < ::MiniTest::Test
