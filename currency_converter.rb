@@ -1,13 +1,6 @@
-module Rates
-  RATES_HASH = { :USD => 1.0, :EUR => 0.74 }
-end
-
-
 class CurrencyConverter
-
-  include Rates
-
   attr_accessor :rates
+
     def initialize(rates)
     @rates = rates
   end
@@ -16,11 +9,11 @@ class CurrencyConverter
     current_amount = currency.amount
     current_code = currency.code
 
-    RATES_HASH.each do |key, value|
-      if key == current_code
-        currency = Currency.new(current_amount * value, new_code)
-      end
-      return currency
+    if current_code == new_code
+      currency
+    else
+      total = (current_amount / rates[current_code]) * rates[new_code]
+      Currency.new(total, new_code)
     end
 
   end
