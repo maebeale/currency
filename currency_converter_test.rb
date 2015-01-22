@@ -8,7 +8,11 @@ class CurrencyConverterTest < ::MiniTest::Test
     assert CurrencyConverter
   end
 
-  def test_currency_converter_ini
+  def test_currency_converter_initializes_with_a_hash
+    hash = Hash.new
+    converter = CurrencyConverter.new(hash)
+    
+
 
   end
 end
