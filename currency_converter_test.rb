@@ -40,7 +40,6 @@ class CurrencyConverterTest < ::MiniTest::Test
     assert_raises(UnknownCurrencyCodeError) do
       converter.convert(Currency.new(10, :USD), :ZAR)
     end
-
   end
 
 

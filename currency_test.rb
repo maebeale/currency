@@ -79,7 +79,12 @@ class CurrencyTest < ::MiniTest::Test
     assert_equal 25, (currency1 * 5).amount
     assert_equal :usd, (currency1 * 5).code
     assert_equal 25.62, (currency1 * 5.1234).amount
+  end
 
+  def test_currency_can_accept_additional_arguments_to_instantiate
+    currency = Currency.new($5.00)
+    assert currency.amount == 5
+    assert currency.code == :usd
   end
 
 end
