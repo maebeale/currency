@@ -83,13 +83,13 @@ class CurrencyTest < ::MiniTest::Test
 
   def test_currency_can_accept_string_arguments_to_instantiate
     fin = Currency.new('$5.00')
-    assert fin.amount == 5
+    assert fin.amount == 5.00
     assert fin.code == :USD
   end
 
   def test_currency_can_accept_still_take_two_arguments
-    fin = Currency.new(5, :USD)
-    assert fin.amount == 5
+    fin = Currency.new(5.00, :USD)
+    assert fin.amount == 5.00
     assert fin.code == :USD
   end
 
